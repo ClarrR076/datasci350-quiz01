@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# Block commit if README.md is not staged
+
+if git diff --cached --name-only | grep -qx "README.md"; then
+    exit 0
+else
+    echo "ERROR: Commit blocked."
+    echo "You must update and stage README.md before committing."
+    exit 1
+fi
+
+
